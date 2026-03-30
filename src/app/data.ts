@@ -10,7 +10,7 @@ import { Track } from './track.interface';
 })
 export class Data {
 
-  private readonly baseUrl: string = 'https://www.theaudiodb.com/api/v1/json/123'
+  private readonly baseUrl: string = '/api/v1/json/123'
 
   constructor(private http: HttpClient) { }
 

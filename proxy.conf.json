@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://www.theaudiodb.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
