@@ -1,8 +1,6 @@
 export interface Album {
+    id: string
     name: string
-    mbid: string
-    url: string
-    playcount: number
-    artistName: string
-    imageLarge: string
+    image: string
+    release_date: string
 }

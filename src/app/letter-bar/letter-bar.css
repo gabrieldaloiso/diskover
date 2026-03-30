@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  background: white;
+}
+
+span a {
+  color: black !important;
+  font-size: 18px;
+  text-decoration: none;
+}

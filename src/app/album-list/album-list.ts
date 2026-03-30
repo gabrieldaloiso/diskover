@@ -19,10 +19,10 @@ export class AlbumList implements OnInit {
   private dataService = inject(Data);
 
   ngOnInit() {
-    const artistName = this.route.snapshot.paramMap.get('id');
+    const artistId = this.route.snapshot.paramMap.get('id');
 
-    if (artistName) {
-      this.dataService.getAlbumsByArtist(artistName).subscribe((res: Album[]) => {
+    if (artistId) {
+      this.dataService.getAlbumsByArtist(artistId).subscribe((res: Album[]) => {
         this.albums = res;
       });
     }

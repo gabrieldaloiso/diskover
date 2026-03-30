@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12 d-flex justify-content-center">
-    <img class="grows" [src]="artist.imageLarge || 'assets/placeholder.png'" height="200px" />
+    <img class="grows" [src]="artist.image || 'assets/placeholder.png'" height="200px" />
   </div>
   <div class="col-12 d-flex justify-content-center">
     <button (click)="onClick()" class="btn btn-success">{{ artist.name }}</button>

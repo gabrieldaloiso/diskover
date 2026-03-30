@@ -10,62 +10,40 @@ import { Track } from './track.interface';
 })
 export class Data {
 
-  private readonly baseUrl: string = '/lastfm/2.0/'
-  private apiKey = '2c35ebdaf478240d5e6a0e25f9667324'
-
   constructor(private http: HttpClient) { }
 
   searchArtists(name: string): Observable<Artist[]> {
-    return this.http.get<any>(
-      `${this.baseUrl}?method=artist.search&artist=${encodeURIComponent(name)}&api_key=${this.apiKey}&format=json`
-    ).pipe(map(res => {
-      const raw = res.results?.artistmatches?.artist ?? []
-      const arr = Array.isArray(raw) ? raw : [raw]
-      return arr.map((a: any): Artist => ({
+    return this.http.get<any>(`/api/search/artist?q=${encodeURIComponent(name)}`)
+      .pipe(map(res => (res.data ?? []).map((a: any): Artist => ({
+        id: a.id.toString(),
         name: a.name,
-        mbid: a.mbid,
-        url: a.url,
-        imageSmall: a.image?.[0]?.['#text'] ?? '',
-        imageLarge: a.image?.[2]?.['#text'] ?? ''
-      }))
-    }))
+        image: a.picture_xl || a.picture_medium || '',
+        followers: a.nb_fan,
+        genres: ''
+      }))))
   }
 
   searchArtistsByLetter(letter: string): Observable<Artist[]> {
     return this.searchArtists(letter)
   }
 
-  getAlbumsByArtist(artistName: string): Observable<Album[]> {
-    return this.http.get<any>(
-      `${this.baseUrl}?method=artist.gettopalbums&artist=${encodeURIComponent(artistName)}&api_key=${this.apiKey}&format=json&limit=20`
-    ).pipe(map(res => {
-      if (!res.topalbums?.album) return []
-      const raw = res.topalbums.album
-      const arr = Array.isArray(raw) ? raw : [raw]
-      return arr.map((a: any): Album => ({
-        name: a.name,
-        mbid: a.mbid,
-        url: a.url,
-        playcount: a.playcount,
-        artistName: a.artist?.name ?? artistName,
-        imageLarge: a.image?.[2]?.['#text'] ?? ''
-      }))
-    }))
+  getAlbumsByArtist(artistId: string): Observable<Album[]> {
+    return this.http.get<any>(`/api/artist/${encodeURIComponent(artistId)}/top?limit=50`)
+      .pipe(map(res => (res.data ?? []).map((item: any): Album => ({
+        id: item.album.id.toString(),
+        name: item.album.title,
+        image: item.album.cover_xl || item.album.cover_medium || '',
+        release_date: item.album.release_date || ''
+      }))))
   }
 
-  getTracksByAlbum(artistName: string, albumName: string): Observable<Track[]> {
-    return this.http.get<any>(
-      `${this.baseUrl}?method=album.getinfo&artist=${encodeURIComponent(artistName)}&album=${encodeURIComponent(albumName)}&api_key=${this.apiKey}&format=json`
-    ).pipe(map(res => {
-      if (!res.album?.tracks?.track) return []
-      const raw = res.album.tracks.track
-      const arr = Array.isArray(raw) ? raw : [raw]
-      return arr.map((t: any): Track => ({
-        name: t.name,
-        duration: t.duration,
-        url: t.url,
-        rank: t['@attr']?.rank
-      }))
-    }))
+  getTracksByAlbum(albumId: string): Observable<Track[]> {
+    return this.http.get<any>(`/api/album/${encodeURIComponent(albumId)}`)
+      .pipe(map(res => (res.tracks?.data ?? []).map((t: any): Track => ({
+        id: t.id.toString(),
+        name: t.title,
+        duration_ms: t.duration * 1000,
+        preview_url: t.preview
+      }))))
   }
 }

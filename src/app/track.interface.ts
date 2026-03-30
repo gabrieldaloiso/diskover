@@ -1,6 +1,6 @@
 export interface Track {
+    id: string
     name: string
-    duration: number
-    url: string
-    rank: number
+    duration_ms: number
+    preview_url: string
 }

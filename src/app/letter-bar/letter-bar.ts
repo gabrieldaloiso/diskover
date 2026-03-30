@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './letter-bar.html',
   styleUrl: './letter-bar.css'
 })
-export class LetterBar {
+export class LetterBar implements OnInit {
   letters: Array<string> = []
 
   ngOnInit(): void {

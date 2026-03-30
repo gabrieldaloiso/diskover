@@ -11,7 +11,7 @@ export const routes: Routes = [
     { path: 'home', component: Home },
     { path: 'artists/:letter', component: ArtistList },
     { path: 'artist/:id', component: AlbumList },
-    { path: 'album/:artist/:album', component: TrackList },
+    { path: 'album/:id', component: TrackList },
     { path: 'obs', component: ObsPage },
     { path: 'about', component: About },
 ];

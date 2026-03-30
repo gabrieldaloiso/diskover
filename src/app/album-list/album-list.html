@@ -2,7 +2,7 @@
   <h2>Albums de l'artiste</h2>
 
   <div class="grid">
-    @for (item of albums; track item.mbid || item.name) {
+    @for (item of albums; track item.id) {
       <app-album [album]="item"></app-album>
     } @empty {
       <p>Aucun album trouvé pour cet artiste.</p>

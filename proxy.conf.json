@@ -1,9 +1,9 @@
 {
-  "/lastfm": {
-    "target": "https://ws.audioscrobbler.com",
+  "/api": {
+    "target": "https://api.deezer.com",
     "secure": true,
     "changeOrigin": true,
-    "pathRewrite": { "^/lastfm": "" },
+    "pathRewrite": { "^/api": "" },
     "logLevel": "debug"
   }
 }

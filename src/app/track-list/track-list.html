@@ -4,11 +4,14 @@
   <h2>Liste des titres</h2>
 
   <ul>
-    @for (t of tracks; track t.rank) {
+    @for (t of tracks; track t.id) {
       <li>
-        <strong>{{ t.rank }}.</strong> {{ t.name }}
-        @if (t.duration) {
-          <span> — {{ formatDuration(t.duration) }}</span>
+        {{ t.name }}
+        @if (t.duration_ms) {
+          <span> — {{ formatDuration(t.duration_ms) }}</span>
+        }
+        @if (t.preview_url) {
+          <audio controls [src]="t.preview_url" style="display:block; margin-top: 4px;"></audio>
         }
       </li>
     } @empty {

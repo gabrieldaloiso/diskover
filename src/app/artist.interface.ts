@@ -1,7 +1,7 @@
 export interface Artist {
+    id: string
     name: string
-    mbid: string
-    url: string
-    imageSmall: string
-    imageLarge: string
+    image: string
+    followers: number
+    genres: string
 }

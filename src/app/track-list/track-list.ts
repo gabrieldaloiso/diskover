@@ -21,18 +21,18 @@ export class TrackList implements OnInit {
   private dataService = inject(Data);
 
   ngOnInit() {
-    const artistName = this.route.snapshot.paramMap.get('artist');
-    const albumName = this.route.snapshot.paramMap.get('album');
+    const albumId = this.route.snapshot.paramMap.get('id');
 
-    if (artistName && albumName) {
-      this.dataService.getTracksByAlbum(artistName, albumName).subscribe((res: Track[]) => {
+    if (albumId) {
+      this.dataService.getTracksByAlbum(albumId).subscribe((res: Track[]) => {
         this.tracks = res;
       });
     }
   }
 
-  formatDuration(seconds: number): string {
-    if (!seconds) return '0:00';
-    return Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
+  formatDuration(ms: number): string {
+    if (!ms) return '0:00';
+    const totalSeconds = Math.floor(ms / 1000);
+    return Math.floor(totalSeconds / 60) + ':' + String(totalSeconds % 60).padStart(2, '0');
   }
 }
