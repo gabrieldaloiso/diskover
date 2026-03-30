@@ -14,7 +14,7 @@ export class ArtistComponent implements OnInit {
   ngOnInit(): void { }
 
   onClick() {
-    this.eventOut.emit(this.artist.idArtist)
+    this.eventOut.emit(this.artist.name)
   }
 
   ngOnDestroy(): void { }

@@ -4,7 +4,7 @@
 
 @if(artists.length > 0) {
   <div class="artist-grid">
-    @for(artist of artists; track artist.idArtist) {
+    @for(artist of artists; track artist.name) {
       <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
     }
   </div>

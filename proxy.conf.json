@@ -1,8 +1,9 @@
 {
-  "/api": {
-    "target": "https://www.theaudiodb.com",
+  "/lastfm": {
+    "target": "https://ws.audioscrobbler.com",
     "secure": true,
     "changeOrigin": true,
+    "pathRewrite": { "^/lastfm": "" },
     "logLevel": "debug"
   }
 }

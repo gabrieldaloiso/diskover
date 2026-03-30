@@ -1,8 +1,8 @@
-<div class="album-card" [routerLink]="['/album', album.idAlbum]">
-  <img [src]="album.strAlbumThumb" [alt]="album.strAlbum" class="album-img">
-  
+<div class="album-card" [routerLink]="['/album', album.artistName, album.name]">
+  <img [src]="album.imageLarge || 'assets/placeholder.png'" [alt]="album.name" class="album-img">
+
   <div class="album-info">
-    <h3>{{ album.strAlbum }}</h3>
-    <p>{{ album.intYearReleased }} • {{ album.strGenre }}</p>
+    <h3>{{ album.name }}</h3>
+    <p>{{ album.playcount }} plays</p>
   </div>
 </div>

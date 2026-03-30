@@ -1,5 +1,5 @@
 <div class="row">
-  @for(artist of artists; track artist.idArtist) {
+  @for(artist of artists; track artist.name) {
     <div class="col-3">
       <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
     </div>
