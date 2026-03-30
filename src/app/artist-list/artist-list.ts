@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { Data } from '../data';
+import { Artist } from '../artist.interface';
 import { ArtistComponent } from '../artist/artist';
 import { LetterBar } from '../letter-bar/letter-bar';
 
@@ -11,7 +13,7 @@ import { LetterBar } from '../letter-bar/letter-bar';
   styleUrl: './artist-list.css'
 })
 export class ArtistList implements OnInit {
-  artists: any[] = [];
+  artists: Artist[] = [];
 
   constructor(
     private data: Data,
@@ -20,14 +22,12 @@ export class ArtistList implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.data.searchArtistsByLetter(params['letter']).subscribe(artists => {
-        this.artists = artists;
-      });
-    });
+    this.route.params.pipe(
+      switchMap(params => this.data.searchArtistsByLetter(params['letter']))
+    ).subscribe(artists => this.artists = artists)
   }
 
-  onArtistSelected(idArtist: string): void {
-  this.router.navigate(['/artist', idArtist]);
+  onArtistSelected(id: string): void {
+    this.router.navigate(['/artist', id]);
   }
 }
