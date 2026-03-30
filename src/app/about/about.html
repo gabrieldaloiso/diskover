@@ -9,13 +9,12 @@
                 Elle permet d'explorer la discographie des artistes.
             </p>
             <p class="ms-5">
-                L'API utilisée est <strong>TheAudioDB</strong> (clé : 123). Elle expose les endpoints suivants :
+                L'API utilisée est <strong>Deezer</strong>. Elle expose les endpoints suivants :
             </p>
             <ul class="ms-5">
-                <li>Recherche d'artiste par nom : <code>/search.php?s={{ '{' }}nom{{ '}' }}</code></li>
-                <li>Recherche d'artiste par lettre : <code>/search.php?s={{ '{' }}lettre{{ '}' }}</code></li>
-                <li>Albums d'un artiste : <code>/album.php?i={{ '{' }}idArtist{{ '}' }}</code></li>
-                <li>Morceaux d'un album : <code>/track.php?m={{ '{' }}idAlbum{{ '}' }}</code></li>
+                <li>Recherche d'artiste par nom : <code>/search/artist?q={{ '{' }}nom{{ '}' }}</code></li>
+                <li>Top tracks d'un artiste (avec albums) : <code>/artist/{{ '{' }}id{{ '}' }}/top?limit=50</code></li>
+                <li>Morceaux d'un album : <code>/album/{{ '{' }}id{{ '}' }}</code></li>
             </ul>
         </div>
     </div>
