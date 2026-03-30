@@ -1,0 +1,42 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    /* On force l'app à faire exactement la taille de la fenêtre */
+    height: 100vh; 
+    width: 100vw;
+    overflow: hidden; /* Empêche le scroll sur TOUTE la page */
+}
+
+header {
+    flex: 0 0 auto;
+    z-index: 1000;
+}
+
+/* LA ZONE DE SCROLL */
+main {
+    flex: 1 1 auto; /* Prend tout l'espace libre */
+    overflow-y: scroll; /* Force l'apparition de la zone de scroll */
+    overflow-x: hidden;
+    padding: 20px 40px;
+    background: linear-gradient(to bottom, #1f1f1f 0%, #121212 100%);
+    
+    /* Pour un scroll fluide sur Mac et iPhone */
+    -webkit-overflow-scrolling: touch;
+}
+
+footer {
+    flex: 0 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+}
+
+/* Animation d'entrée */
+router-outlet + * {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.row {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-align: center;
+}
+
+
+.row:hover {
+  background: var(--bg-hover);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.grows {
+  width: 160px; 
+  height: 160px; 
+  object-fit: cover; 
+  border-radius: 50%; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.row:hover .grows {
+  transform: scale(1.05); 
+}
+
+.btn-success {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-main) !important;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0;
+  margin-top: 5px;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  transition: color 0.2s ease;
+}
+
+.row:hover .btn-success {
+  color: var(--accent) !important; 
+}
+
+.padding-b-25 {
+  padding-bottom: 0 !important;
+}
