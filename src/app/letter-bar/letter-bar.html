@@ -1,1 +1,3 @@
-<p>letter-bar works!</p>
+@for(letter of letters; track letter) {
+    <span style="color: black"><a [routerLink]="['/artists', letter]">{{ letter }}</a>&nbsp;</span>
+}

@@ -1,1 +1,8 @@
-<p>artist works!</p>
+<div class="row">
+  <div class="col-12 d-flex justify-content-center">
+    <img class="grows" [src]="artist.strArtistThumb" height="200px" />
+  </div>
+  <div class="col-12 d-flex justify-content-center">
+    <button (click)="onClick()" class="btn btn-success">{{ artist.strArtist }}</button>
+  </div>
+</div>

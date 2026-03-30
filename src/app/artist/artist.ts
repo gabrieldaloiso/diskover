@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-artist',
   imports: [],
   templateUrl: './artist.html',
-  styleUrl: './artist.css',
+  styleUrl: './artist.css'
 })
-export class Artist {
+export class ArtistComponent implements OnInit {
+  @Input() artist: any
+  @Output() eventOut = new EventEmitter<string>()
 
+  constructor() { }
+  ngOnInit(): void { }
+
+  onClick() {
+    this.eventOut.emit(this.artist.idArtist)
+  }
+
+  ngOnDestroy(): void { }
 }

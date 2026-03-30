@@ -1,1 +1,7 @@
-<p>artist-list works!</p>
+<div class="row">
+  @for(artist of artists; track artist.idArtist) {
+    <div class="col-3">
+      <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
+    </div>
+  }
+</div>

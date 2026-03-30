@@ -1,1 +1,4 @@
-<p>search works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="onSub()">
+    <input [formControl]="searchCtrl">
+    <button>Filter</button>
+</form>

@@ -1,1 +1,15 @@
-<p>home works!</p>
+<app-letter-bar></app-letter-bar>
+
+<app-search (onFilter)="onSearch($event)"></app-search>
+
+@if(artists.length > 0) {
+  <div class="artist-grid">
+    @for(artist of artists; track artist.idArtist) {
+      <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
+    }
+  </div>
+} @else if(hasSearched) {
+  <p>Aucun artiste trouvé.</p>
+} @else {
+  <p>Sélectionne une lettre ou recherche un artiste.</p>
+}
