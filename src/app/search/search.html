@@ -1,4 +1,15 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSub()">
-    <input [formControl]="searchCtrl">
-    <button>Filter</button>
-</form>
+<div class="search-container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSub()" class="search-box">
+    
+    <input 
+      type="text" 
+      [formControl]="searchCtrl" 
+      placeholder="Artistes, titres ou albums..."
+      aria-label="Rechercher">
+
+    <button type="submit" class="search-btn">
+      Rechercher
+    </button>
+
+  </form>
+</div>

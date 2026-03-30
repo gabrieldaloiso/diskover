@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.panel {
+  background: linear-gradient(135deg, #1db954 0%, #191414 100%); 
+  border-radius: 20px;
+  border: none;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.f-x-large {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem !important; 
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: white;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+
+.padding-40 {
+  padding: 60px 20px !important;
+}
+
+@media (max-width: 768px) {
+  .f-x-large {
+    font-size: 1.8rem !important;
+  }
+}

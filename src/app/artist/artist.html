@@ -1,8 +1,9 @@
-<div class="row">
+<div class="row" (click)="onClick()">
   <div class="col-12 d-flex justify-content-center">
-    <img class="grows" [src]="artist.image || 'assets/placeholder.png'" height="200px" />
+    <img class="grows" [src]="artist.image || 'assets/placeholder.png'" />
   </div>
+  
   <div class="col-12 d-flex justify-content-center">
-    <button (click)="onClick()" class="btn btn-success">{{ artist.name }}</button>
+    <span class="btn-success">{{ artist.name }}</span>
   </div>
 </div>

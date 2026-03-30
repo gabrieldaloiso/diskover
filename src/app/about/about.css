@@ -1,0 +1,78 @@
+:host {
+    display: block;
+    padding: 40px 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.bg-color-1 {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px !important;
+}
+
+.titre {
+    font-size: 2.2rem !important;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 20px !important;
+}
+
+strong {
+    color: var(--accent); 
+}
+
+ul {
+    list-style: none;
+    padding: 0 !important;
+    margin-top: 30px;
+}
+
+li {
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: translateX(10px);
+    border-color: var(--accent);
+}
+
+code {
+    background: #000 !important;
+    color: #f8f8f2 !important; 
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    border: 1px solid #333;
+}
+
+@media (max-width: 768px) {
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
