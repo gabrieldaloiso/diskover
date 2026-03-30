@@ -1,1 +1,11 @@
-<p>album-list works!</p>
+<div class="album-container">
+  <h2>Albums de l'artiste</h2>
+
+  <div class="grid">
+    @for (item of albums; track item.idAlbum) {
+      <app-album [album]="item"></app-album>
+    } @empty {
+      <p>Aucun album trouvé pour cet artiste.</p>
+    }
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.album-container {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid #ffd700; /* Un petit trait jaune style ISEN ? */
+  padding-bottom: 10px;
+}

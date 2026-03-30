@@ -1,1 +1,15 @@
-<p>track-list works!</p>
+<div class="track-container" style="padding: 20px;">
+  <button (click)="goBack()" class="back-button">← Retour</button>
+  
+  <h2>Liste des titres</h2>
+  
+  <ul>
+    @for (t of tracks; track t.idTrack) {
+      <li>
+        <strong>{{ t.intTrackNumber }}.</strong> {{ t.strTrack }}
+      </li>
+    } @empty {
+      <p>Aucune piste trouvée.</p>
+    }
+  </ul>
+</div>

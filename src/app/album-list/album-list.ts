@@ -1,11 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Data } from '../data'; 
+import { Album } from '../album.interface';
+import { AlbumComponent } from '../album/album';
 
 @Component({
   selector: 'app-album-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, AlbumComponent], 
   templateUrl: './album-list.html',
   styleUrl: './album-list.css',
 })
-export class AlbumList {
+export class AlbumList implements OnInit {
+  albums: Album[] = [];
 
+  private route = inject(ActivatedRoute);
+  private dataService = inject(Data); 
+
+  ngOnInit() {
+    const idArtist = this.route.snapshot.paramMap.get('id');
+    
+    if (idArtist) {
+      this.dataService.getAlbumsByArtist(idArtist).subscribe((res: Album[]) => {
+        this.albums = res;
+      });
+    }
+  }
 }

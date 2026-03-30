@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Album } from '../album.interface'; 
 @Component({
   selector: 'app-album',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink], 
   templateUrl: './album.html',
   styleUrl: './album.css',
 })
-export class Album {
-
+export class AlbumComponent {
+  @Input() album!: Album; 
 }
