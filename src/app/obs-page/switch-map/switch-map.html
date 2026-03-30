@@ -1,0 +1,28 @@
+<h3>switchMap — Appels API chaînés</h3>
+
+<div class="chain-diagram">
+  searchArtists() <span>──switchMap──▶</span> getAlbumsByArtist(<em>id</em>)
+</div>
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <input formControlName="artist" placeholder="Nom d'un artiste" />
+  <button type="submit">Rechercher</button>
+</form>
+
+@if (foundArtist) {
+  <div class="step-label">Étape 1 — Artiste trouvé :</div>
+  <div class="artist-card">
+    <img [src]="foundArtist.image" [alt]="foundArtist.name" />
+    <strong>{{ foundArtist.name }}</strong>
+  </div>
+
+  <div class="step-label">Étape 2 — {{ albums.length }} albums chargés :</div>
+  <div class="albums-grid">
+    @for (album of albums; track album.id) {
+      <div class="album-card">
+        <img [src]="album.image" [alt]="album.name" />
+        <span>{{ album.name }}</span>
+      </div>
+    }
+  </div>
+}
