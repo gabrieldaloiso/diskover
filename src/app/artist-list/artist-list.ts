@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Data } from '../data';
 import { ArtistComponent } from '../artist/artist';
+import { LetterBar } from '../letter-bar/letter-bar';
 
 @Component({
   selector: 'app-artist-list',
-  imports: [ArtistComponent],
+  imports: [ArtistComponent, LetterBar],
   templateUrl: './artist-list.html',
   styleUrl: './artist-list.css'
 })
