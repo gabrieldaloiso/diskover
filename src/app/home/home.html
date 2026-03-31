@@ -11,7 +11,7 @@
   </div>
 } @else {
   <div class="section-title">🔥 Top 10 artistes en ce moment</div>
-  <div class="artist-grid">
+  <div class="top-artists">
     @for(artist of topArtists; track artist.id) {
       <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
     }

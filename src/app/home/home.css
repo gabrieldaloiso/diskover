@@ -12,24 +12,21 @@
   justify-items: center;
 }
 
-.carousel {
+.top-artists {
   display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 16px 24px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
   flex-wrap: nowrap;
+  gap: 24px;
+  padding: 16px 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.carousel::-webkit-scrollbar {
+.top-artists::-webkit-scrollbar {
   display: none;
 }
 
-.carousel-item {
-  flex: 0 0 200px;
-  min-width: 200px;
-  scroll-snap-align: start;
+.top-artists > * {
+  flex: 0 0 160px;
 }
 
 .section-title {
@@ -58,6 +55,5 @@ p {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
     padding: 10px;
-    
   }
 }
