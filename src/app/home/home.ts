@@ -14,6 +14,7 @@ import { ArtistComponent } from '../artist/artist';
 })
 export class Home implements OnInit {
   artists: Artist[] = [];
+  topArtists: any[] = [];
   hasSearched: boolean = false;
 
   private searchSubject = new Subject<string>()
@@ -21,6 +22,10 @@ export class Home implements OnInit {
   constructor(private data: Data, private router: Router) {}
 
   ngOnInit(): void {
+    this.data.getTopArtists().subscribe(artists => {
+      this.topArtists = artists;
+    });
+
     this.searchSubject.pipe(
       switchMap(query => this.data.searchArtists(query))
     ).subscribe(artists => this.artists = artists)

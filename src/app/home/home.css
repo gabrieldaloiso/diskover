@@ -9,7 +9,34 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 30px;
   padding: 20px;
-  justify-items: center; 
+  justify-items: center;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 16px 24px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  flex: 0 0 200px;
+  min-width: 200px;
+  scroll-snap-align: start;
+}
+
+.section-title {
+  padding: 16px 24px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
 }
 
 p {
@@ -31,5 +58,6 @@ p {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
     padding: 10px;
+    
   }
 }
