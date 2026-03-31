@@ -27,6 +27,17 @@ export class Data {
     return this.searchArtists(letter)
   }
 
+  getArtistById(artistId: string): Observable<Artist> {
+    return this.http.get<any>(`/api/artist/${encodeURIComponent(artistId)}`)
+      .pipe(map(a => ({
+        id: a.id.toString(),
+        name: a.name,
+        image: a.picture_xl || a.picture_medium || '',
+        followers: a.nb_fan,
+        genres: ''
+      })))
+  }
+
   getAlbumsByArtist(artistId: string): Observable<Album[]> {
     return this.http.get<any>(`/api/artist/${encodeURIComponent(artistId)}/albums`)
       .pipe(map(res => (res.data ?? []).map((album: any): Album => ({

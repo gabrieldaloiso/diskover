@@ -14,6 +14,7 @@ import { AlbumComponent } from '../album/album';
 })
 export class AlbumList implements OnInit {
   albums: Album[] = [];
+  artistName: string = '';
 
   private route = inject(ActivatedRoute);
   private dataService = inject(Data);
@@ -22,6 +23,9 @@ export class AlbumList implements OnInit {
     const artistId = this.route.snapshot.paramMap.get('id');
 
     if (artistId) {
+      this.dataService.getArtistById(artistId).subscribe(artist => {
+        this.artistName = artist.name;
+      });
       this.dataService.getAlbumsByArtist(artistId).subscribe((res: Album[]) => {
         this.albums = res;
       });
