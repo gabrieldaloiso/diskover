@@ -13,8 +13,11 @@
             </p>
             <ul class="ms-5">
                 <li>Recherche d'artiste par nom : <code>/search/artist?q={{ '{' }}nom{{ '}' }}</code></li>
+                <li>Détail d'un artiste : <code>/artist/{{ '{' }}id{{ '}' }}</code></li>
                 <li>Albums d'un artiste : <code>/artist/{{ '{' }}id{{ '}' }}/albums</code></li>
                 <li>Morceaux d'un album : <code>/album/{{ '{' }}id{{ '}' }}</code></li>
+                <li>Top 10 artistes du moment : <code>/chart/0/artists?limit=10</code></li>
+                <li>Top 10 albums du moment : <code>/chart/0/albums?limit=10</code></li>
             </ul>
         </div>
     </div>
