@@ -28,12 +28,12 @@ export class Data {
   }
 
   getAlbumsByArtist(artistId: string): Observable<Album[]> {
-    return this.http.get<any>(`/api/artist/${encodeURIComponent(artistId)}/top?limit=50`)
-      .pipe(map(res => (res.data ?? []).map((item: any): Album => ({
-        id: item.album.id.toString(),
-        name: item.album.title,
-        image: item.album.cover_xl || item.album.cover_medium || '',
-        release_date: item.album.release_date || ''
+    return this.http.get<any>(`/api/artist/${encodeURIComponent(artistId)}/albums`)
+      .pipe(map(res => (res.data ?? []).map((album: any): Album => ({
+        id: album.id.toString(),
+        name: album.title,
+        image: album.cover_xl || album.cover_medium || '',
+        release_date: album.release_date || ''
       }))))
   }
 
