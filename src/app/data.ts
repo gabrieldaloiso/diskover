@@ -48,13 +48,23 @@ export class Data {
   }
 
   getTopArtists(): Observable<any[]> {
-  return this.http.get<any>('/api/chart/0/artists?limit=10')
-    .pipe(map(res => (res.data ?? []).map((a: any) => ({
-      id: a.id.toString(),
-      name: a.name,
-      image: a.picture_xl || a.picture_medium || '',
-      followers: a.nb_fan,
-      genres: ''
-    }))))
+    return this.http.get<any>('/api/chart/0/artists?limit=10')
+      .pipe(map(res => (res.data ?? []).map((a: any) => ({
+        id: a.id.toString(),
+        name: a.name,
+        image: a.picture_xl || a.picture_medium || '',
+        followers: a.nb_fan,
+        genres: ''
+      }))))
+  }
+
+  getTopAlbums(): Observable<Album[]> {
+    return this.http.get<any>('/api/chart/0/albums?limit=10')
+      .pipe(map(res => (res.data ?? []).map((a: any): Album => ({
+        id: a.id.toString(),
+        name: a.title,
+        image: a.cover_xl || a.cover_medium || '',
+        release_date: a.release_date || ''
+      }))))
   }
 }

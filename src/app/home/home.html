@@ -16,5 +16,12 @@
       <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
     }
   </div>
+
+  <div class="section-title">💿 Top 10 albums en ce moment</div>
+  <div class="top-artists">
+    @for(album of topAlbums; track album.id) {
+      <app-album [album]="album"></app-album>
+    }
+  </div>
 }
 
