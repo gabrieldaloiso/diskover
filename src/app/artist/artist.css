@@ -4,20 +4,13 @@
 }
 
 .row {
-  background: var(--bg-card);
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   text-align: center;
 }
 
-
 .row:hover {
-  background: var(--bg-hover);
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
 .grows {
@@ -49,9 +42,5 @@
 
 .row:hover .btn-success {
   color: var(--accent) !important; 
-}
-
-.padding-b-25 {
-  padding-bottom: 0 !important;
 }
 
