@@ -1,4 +1,4 @@
-/* Le conteneur principal */
+
 .track-container {
   max-width: 1000px;
   margin: 20px auto;
@@ -9,7 +9,7 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Titre de la page */
+
 h2 {
   font-size: 2rem;
   font-weight: 800;
