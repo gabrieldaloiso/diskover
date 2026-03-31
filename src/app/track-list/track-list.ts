@@ -13,6 +13,8 @@ import { Track } from '../track.interface';
 })
 export class TrackList implements OnInit {
   tracks: Track[] = [];
+  albumTitle: string = '';
+  albumCover: string = '';
 
   goBack() {
     window.history.back();
@@ -24,6 +26,10 @@ export class TrackList implements OnInit {
     const albumId = this.route.snapshot.paramMap.get('id');
 
     if (albumId) {
+      this.dataService.getAlbumById(albumId).subscribe(album => {
+        this.albumTitle = album.name;
+        this.albumCover = album.image;
+      });
       this.dataService.getTracksByAlbum(albumId).subscribe((res: Track[]) => {
         this.tracks = res;
       });

@@ -1,7 +1,11 @@
 <div class="track-container">
-  <button (click)="goBack()" class="back-button">← Retour</button>
-
-  <h2>Liste des titres</h2>
+  <div class="track-list-header">
+    <button (click)="goBack()" class="back-button">← Retour</button>
+    <h2>Liste des titres de : {{ albumTitle }}</h2>
+    @if (albumCover) {
+      <img [src]="albumCover" [alt]="albumTitle" class="album-cover">
+    }
+  </div>
 
   <ul>
     @for (t of tracks; track t.id) {

@@ -10,11 +10,27 @@
 }
 
 
-h2 {
+.track-list-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.track-list-header h2 {
+  flex: 1;
   font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 30px;
+  margin: 0;
   letter-spacing: -1px;
+}
+
+.album-cover {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 ul {
@@ -59,12 +75,12 @@ button {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 8px 20px;
+  padding: 5px 12px;
   border-radius: 30px;
   cursor: pointer;
-  margin-bottom: 30px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
+  width: fit-content;
   transition: all 0.3s ease;
 }
 

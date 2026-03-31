@@ -37,6 +37,16 @@ export class Data {
       }))))
   }
 
+  getAlbumById(albumId: string): Observable<Album> {
+    return this.http.get<any>(`/api/album/${encodeURIComponent(albumId)}`)
+      .pipe(map(res => ({
+        id: res.id.toString(),
+        name: res.title,
+        image: res.cover_xl || res.cover_medium || '',
+        release_date: res.release_date || ''
+      })))
+  }
+
   getTracksByAlbum(albumId: string): Observable<Track[]> {
     return this.http.get<any>(`/api/album/${encodeURIComponent(albumId)}`)
       .pipe(map(res => (res.tracks?.data ?? []).map((t: any): Track => ({
