@@ -25,9 +25,10 @@ ul {
 li {
   display: flex;
   padding: 12px 15px;
-  border-radius: 8px; 
+  border-radius: 8px;
   align-items: center;
-  transition: var(--transition); 
+  gap: 16px;
+  transition: var(--transition);
   cursor: default;
 }
 
@@ -48,6 +49,19 @@ li strong {
   flex: 1;
   font-weight: 500;
   font-size: 1.05rem;
+}
+
+.duration {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+audio {
+  height: 32px;
+  width: 220px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  color-scheme: dark;
 }
 
 button {

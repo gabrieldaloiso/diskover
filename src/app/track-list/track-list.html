@@ -6,12 +6,14 @@
   <ul>
     @for (t of tracks; track t.id) {
       <li>
-        {{ t.name }}
-        @if (t.duration_ms) {
-          <span> — {{ formatDuration(t.duration_ms) }}</span>
-        }
+        <span class="track-name">
+          {{ t.name }}
+          @if (t.duration_ms) {
+            <span class="duration"> — {{ formatDuration(t.duration_ms) }}</span>
+          }
+        </span>
         @if (t.preview_url) {
-          <audio controls [src]="t.preview_url" style="display:block; margin-top: 4px;"></audio>
+          <audio controls [src]="t.preview_url"></audio>
         }
       </li>
     } @empty {
