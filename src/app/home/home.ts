@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, switchMap } from 'rxjs';
+import { forkJoin, Subject, switchMap } from 'rxjs';
 import { Data } from '../data';
 import { Artist } from '../artist.interface';
 import { Album } from '../album.interface';
+import { Track } from '../track.interface';
 import { Search } from '../search/search';
 import { ArtistComponent } from '../artist/artist';
 import { AlbumComponent } from '../album/album';
@@ -16,6 +17,8 @@ import { AlbumComponent } from '../album/album';
 })
 export class Home implements OnInit {
   artists: Artist[] = [];
+  albums: Album[] = [];
+  tracks: Track[] = [];
   topArtists: any[] = [];
   topAlbums: Album[] = [];
   hasSearched: boolean = false;
@@ -34,8 +37,16 @@ export class Home implements OnInit {
     });
 
     this.searchSubject.pipe(
-      switchMap(query => this.data.searchArtists(query))
-    ).subscribe(artists => this.artists = artists)
+      switchMap(query => forkJoin({
+        artists: this.data.searchArtists(query),
+        albums: this.data.searchAlbums(query),
+        tracks: this.data.searchTracks(query)
+      }))
+    ).subscribe(({ artists, albums, tracks }) => {
+      this.artists = artists;
+      this.albums = albums;
+      this.tracks = tracks;
+    })
   }
 
   onSearch(query: string): void {
@@ -45,5 +56,11 @@ export class Home implements OnInit {
 
   onArtistSelected(id: string): void {
     this.router.navigate(['/artist', id]);
+  }
+
+  formatDuration(ms: number): string {
+    if (!ms) return '0:00';
+    const totalSeconds = Math.floor(ms / 1000);
+    return Math.floor(totalSeconds / 60) + ':' + String(totalSeconds % 60).padStart(2, '0');
   }
 }

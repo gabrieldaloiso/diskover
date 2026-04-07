@@ -23,6 +23,26 @@ export class Data {
       }))))
   }
 
+  searchAlbums(query: string): Observable<Album[]> {
+    return this.http.get<any>(`/api/search/album?q=${encodeURIComponent(query)}`)
+      .pipe(map(res => (res.data ?? []).map((a: any): Album => ({
+        id: a.id.toString(),
+        name: a.title,
+        image: a.cover_xl || a.cover_medium || '',
+        release_date: a.release_date || ''
+      }))))
+  }
+
+  searchTracks(query: string): Observable<Track[]> {
+    return this.http.get<any>(`/api/search/track?q=${encodeURIComponent(query)}`)
+      .pipe(map(res => (res.data ?? []).map((t: any): Track => ({
+        id: t.id.toString(),
+        name: t.title,
+        duration_ms: t.duration * 1000,
+        preview_url: t.preview
+      }))))
+  }
+
   searchArtistsByLetter(letter: string): Observable<Artist[]> {
     return this.searchArtists(letter)
   }

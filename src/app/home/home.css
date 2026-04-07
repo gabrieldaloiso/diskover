@@ -45,6 +45,48 @@ p {
   font-style: italic;
 }
 
+.track-results {
+  list-style: none;
+  padding: 8px 24px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.track-result-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--card-bg, #1e1e2e);
+  border-radius: 8px;
+}
+
+.track-result-item .track-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.track-result-item .track-duration {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.track-result-item audio {
+  height: 32px;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  margin-top: 50px;
+  font-weight: 300;
+  font-style: italic;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }

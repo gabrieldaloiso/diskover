@@ -1,14 +1,44 @@
 <app-search (onFilter)="onSearch($event)"></app-search>
 
 @if(hasSearched) {
-  <div class="section-title">Résultats de recherche</div>
-  <div class="artist-grid">
-    @for(artist of artists; track artist.id) {
-      <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
-    } @empty {
-      <p>Aucun artiste trouvé.</p>
-    }
-  </div>
+  @if(artists.length > 0) {
+    <div class="section-title">Artistes</div>
+    <div class="artist-grid">
+      @for(artist of artists; track artist.id) {
+        <app-artist [artist]="artist" (eventOut)="onArtistSelected($event)"></app-artist>
+      }
+    </div>
+  }
+
+  @if(albums.length > 0) {
+    <div class="section-title">Albums</div>
+    <div class="artist-grid">
+      @for(album of albums; track album.id) {
+        <app-album [album]="album"></app-album>
+      }
+    </div>
+  }
+
+  @if(tracks.length > 0) {
+    <div class="section-title">Titres</div>
+    <ul class="track-results">
+      @for(track of tracks; track track.id) {
+        <li class="track-result-item">
+          <span class="track-name">{{ track.name }}</span>
+          @if(track.duration_ms) {
+            <span class="track-duration">{{ formatDuration(track.duration_ms) }}</span>
+          }
+          @if(track.preview_url) {
+            <audio controls [src]="track.preview_url"></audio>
+          }
+        </li>
+      }
+    </ul>
+  }
+
+  @if(artists.length === 0 && albums.length === 0 && tracks.length === 0) {
+    <p class="no-results">Aucun résultat trouvé.</p>
+  }
 } @else {
   <div class="section-title">🔥 Top 10 artistes en ce moment</div>
   <div class="top-artists">
